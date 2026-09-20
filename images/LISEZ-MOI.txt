@@ -1,0 +1,51 @@
+Dépose tes photos dans le sous-dossier de la bonne catégorie :
+
+    images/pochettes/
+    images/chargeur/
+    images/incassable/
+
+(tu peux créer d'autres sous-dossiers si tu ajoutes une nouvelle catégorie —
+ pense juste à ajouter la ligne correspondante dans CATEGORY_GRIDS, dans script.js,
+ et à créer la grille id="xxxGrid" dans index.html)
+
+Nom de fichier à l'intérieur de chaque sous-dossier :
+
+    PRIX_Nom-Du-Produit_Point-fort-optionnel.jpg
+
+Exemples :
+    1500_Pochette-iphone-11.jpg
+    2000_Chargeur-rapide_Fait-main.jpg
+    3000_Coque-incassable-transparente.jpg
+
+Règles :
+- Le prix est toujours le premier morceau, avant le premier underscore "_"
+- Le nom du produit est le deuxième morceau (les tirets "-" deviennent des espaces)
+- Le point fort (badge affiché en vert) est facultatif, c'est le troisième morceau
+- Formats acceptés : .jpg, .jpeg, .png, .webp
+
+Une fois tes photos déposées, lance depuis un terminal (dans le dossier du projet) :
+
+    node build-catalogue.js
+
+ou, pour que ça se fasse tout seul à chaque nouvelle photo :
+
+    node build-catalogue.js --watch
+
+Ça régénère automatiquement le fichier images.json que le site utilise.
+
+GESTION DU STOCK
+-----------------
+Chaque nouvelle photo démarre avec 5 en stock par défaut.
+
+Une vente confirmée sur WhatsApp :
+    node build-catalogue.js --vendu "1500_Pochette-iphone-11.jpg"
+    node build-catalogue.js --vendu "chargeur/2000_Chargeur-rapide.jpg" 2   (si 2 vendues d'un coup)
+
+Un réapprovisionnement :
+    node build-catalogue.js --stock "1500_Pochette-iphone-11.jpg" 10
+
+Si un même nom de fichier existe dans deux catégories, précise la catégorie
+devant le nom (ex. "chargeur/2000_....jpg") sinon le script te demandera de préciser.
+
+Le site affiche automatiquement "Plus que X en stock" et bloque la commande à 0.
+N'oublie pas de redéployer le site (Netlify/etc.) après une mise à jour pour que les visiteurs voient les nouveautés.

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pochettes Chic — Vitrine &amp; Commande WhatsApp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="nav">
+    <div class="brand">Pochettes Chic</div>
+    <a class="nav-cta" id="navOrder" href="#" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+  </div>
+</header>
+
+<div class="promo">🎉 Offre de lancement ce mois-ci : <span>-10% sur toute commande via ce site</span></div>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <h1>Des pochettes qui font tourner les têtes, à deux pas de chez vous.</h1>
+      <p class="sub">Découvrez le catalogue, choisissez votre modèle préféré et passez commande directement sur WhatsApp — livraison rapide, paiement à la réception.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary order-link" href="#" target="_blank" rel="noopener">Voir le catalogue</a>
+        <a class="btn btn-secondary" href="#contact">Où me trouver</a>
+      </div>
+    </div>
+    <div class="swatch-grid" aria-hidden="true">
+      <div class="swatch s1"></div>
+      <div class="swatch s2"></div>
+      <div class="swatch s3"></div>
+      <div class="swatch s4"></div>
+      <div class="swatch s5"></div>
+      <div class="swatch s6"></div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogue">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Le catalogue</h2>
+      <p>Chaque modèle est disponible en stock limité. Cliquez sur "Commander" pour réserver le vôtre directement sur WhatsApp.</p>
+    </div>
+    <div class="grid" id="catalogueGrid"></div>
+  </div>
+</section>
+
+<section id="pourquoi" style="background:var(--card-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pourquoi commander ici</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-item"><div class="num">100%</div><p>Fait main, choisi pièce par pièce</p></div>
+      <div class="trust-item"><div class="num">24h</div><p>Livraison rapide sur Abomey-Calavi et Cotonou</p></div>
+      <div class="trust-item"><div class="num">0F</div><p>Paiement à la livraison, sans risque</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="avis">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ce que disent nos clients</h2>
+      <p>Des vrais retours de clients servis, sur le site, le vendeur et la marchandise.</p>
+    </div>
+    <div class="grid" id="temoignagesGrid"></div>
+    <div class="cta-row" style="margin-top:24px;">
+      <a class="btn btn-secondary" href="#laisser-avis">Laisser mon avis</a>
+    </div>
+  </div>
+</section>
+
+<section id="laisser-avis" style="background:var(--card-bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Vous venez d'être servi ?</h2>
+      <p>Notez votre expérience en 30 secondes — ça part directement au vendeur sur WhatsApp.</p>
+    </div>
+    <form id="reviewForm" class="review-form">
+      <div class="field">
+        <label for="reviewName">Votre nom</label>
+        <input type="text" id="reviewName" name="reviewName" required>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Note du site</span>
+        <div class="stars" data-target="siteNote"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Note du vendeur</span>
+        <div class="stars" data-target="vendeurNote"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Note de la marchandise</span>
+        <div class="stars" data-target="marchandiseNote"></div>
+      </div>
+
+      <div class="field">
+        <label for="reviewComment">Un commentaire (facultatif)</label>
+        <textarea id="reviewComment" name="reviewComment" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Envoyer mon avis sur WhatsApp</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Où me trouver</h2>
+      <p>Passez me voir directement ou écrivez-moi sur WhatsApp pour toute question.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary order-link" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Pochettes Chic</h3>
+      <p style="color:rgba(251,246,236,0.75)">Vendeur ambulant de pochettes — Abomey-Calavi, Bénin.</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a class="foot-link" id="footWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <div>
+      <h3>Horaires</h3>
+      <p style="color:rgba(251,246,236,0.75)">Tous les jours, 9h — 19h</p>
+    </div>
+  </div>
+  <div class="wrap fine">Site vitrine — © <span id="year"></span> Pochettes Chic.</div>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

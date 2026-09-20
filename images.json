@@ -1,0 +1,112 @@
+{
+  "chargeur": [
+    {
+      "name": "multiport",
+      "price": 0,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/chargeur_multiport.jpg",
+      "stock": 5
+    },
+    {
+      "name": "usb",
+      "price": 0,
+      "badge": "c",
+      "category": "chargeur",
+      "image": "images/chargeur/chargeur_usb_c.jpg",
+      "stock": 5
+    }
+  ],
+  "incassable": [
+    {
+      "name": "protecteur",
+      "price": 0,
+      "badge": "",
+      "category": "incassable",
+      "image": "images/incassable/film_protecteur.jpg",
+      "stock": 5
+    },
+    {
+      "name": "trempe",
+      "price": 0,
+      "badge": "",
+      "category": "incassable",
+      "image": "images/incassable/verre_trempe.jpg",
+      "stock": 5
+    }
+  ],
+  "pochettes": [
+    {
+      "name": "Pochette iphone 11",
+      "price": 1500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/1500_Pochette-iphone-11.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette a une main",
+      "price": 2000,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2000_Pochette-a-une-main.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette iphone 13",
+      "price": 2000,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2000_Pochette-iphone-13.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette multi telephone",
+      "price": 2000,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2000_Pochette-multi-telephone.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette iphone 13 pro",
+      "price": 2500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2500_Pochette-iphone-13-pro.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette iphone",
+      "price": 2500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2500_Pochette-iphone.jpg",
+      "stock": 5
+    },
+    {
+      "name": "Pochette iphone design bois",
+      "price": 3000,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/3000_Pochette-iphone-design-bois.jpg",
+      "stock": 5
+    },
+    {
+      "name": "noire",
+      "price": 0,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/pochette_noire.jpg",
+      "stock": 5
+    },
+    {
+      "name": "transparente",
+      "price": 0,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/pochette_transparente.jpg",
+      "stock": 5
+    }
+  ]
+}
