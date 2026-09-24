@@ -1,37 +1,85 @@
 {
   "chargeur": [
     {
-      "name": "multiport",
-      "price": 0,
+      "name": "chargeur C",
+      "price": 1000,
       "badge": "",
       "category": "chargeur",
-      "image": "images/chargeur/chargeur_multiport.jpg",
+      "image": "images/chargeur/1000_chargeur-C.jpg",
       "stock": 5
     },
     {
-      "name": "usb",
-      "price": 0,
-      "badge": "c",
+      "name": "Chargeur de qualité",
+      "price": 1000,
+      "badge": "",
       "category": "chargeur",
-      "image": "images/chargeur/chargeur_usb_c.jpg",
+      "image": "images/chargeur/1000_Chargeur-de-qualité.jpg",
+      "stock": 5
+    },
+    {
+      "name": "fil de chargeur",
+      "price": 1000,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/1000_fil-de-chargeur.jpg",
+      "stock": 5
+    },
+    {
+      "name": "usb chargeur particulier",
+      "price": 1000,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/1000_usb-chargeur-particulier.jpg",
+      "stock": 5
+    },
+    {
+      "name": "ecouteur sans fil",
+      "price": 2000,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/2000_ecouteur-sans-fil.jpg",
+      "stock": 5
+    },
+    {
+      "name": "ecouteurs sans fil",
+      "price": 2000,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/2000_ecouteurs-sans-fil.jpg",
+      "stock": 5
+    },
+    {
+      "name": "tete chargeur qualité",
+      "price": 500,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/500_tete-chargeur-qualité.jpg",
+      "stock": 5
+    },
+    {
+      "name": "tete de chargeur",
+      "price": 500,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/500_tete-de-chargeur.jpg",
       "stock": 5
     }
   ],
   "incassable": [
     {
-      "name": "protecteur",
-      "price": 0,
+      "name": "Coque incassable",
+      "price": 1000,
       "badge": "",
       "category": "incassable",
-      "image": "images/incassable/film_protecteur.jpg",
+      "image": "images/incassable/1000_Coque-incassable.jpg",
       "stock": 5
     },
     {
-      "name": "trempe",
-      "price": 0,
+      "name": "Coque incassable",
+      "price": 1500,
       "badge": "",
       "category": "incassable",
-      "image": "images/incassable/verre_trempe.jpg",
+      "image": "images/incassable/1500_Coque-incassable.jpg",
       "stock": 5
     }
   ],
@@ -42,6 +90,38 @@
       "badge": "",
       "category": "pochettes",
       "image": "images/pochettes/1500_Pochette-iphone-11.jpg",
+      "stock": 5
+    },
+    {
+      "name": "pochette noir",
+      "price": 1500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/1500_pochette-noir.jpg",
+      "stock": 5
+    },
+    {
+      "name": "pochette simple",
+      "price": 1500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/1500_pochette-simple.jpg",
+      "stock": 5
+    },
+    {
+      "name": "pochette",
+      "price": 1500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/1500_pochette.jpg",
+      "stock": 5
+    },
+    {
+      "name": "pochette1",
+      "price": 1500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/1500_pochette1.jpg",
       "stock": 5
     },
     {
@@ -69,6 +149,22 @@
       "stock": 5
     },
     {
+      "name": "pochette a rabat couleurs",
+      "price": 2500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2500_pochette-a-rabat-couleurs.jpg",
+      "stock": 5
+    },
+    {
+      "name": "pochette a rabat",
+      "price": 2500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2500_pochette-a-rabat.jpg",
+      "stock": 5
+    },
+    {
       "name": "Pochette iphone 13 pro",
       "price": 2500,
       "badge": "",
@@ -90,22 +186,6 @@
       "badge": "",
       "category": "pochettes",
       "image": "images/pochettes/3000_Pochette-iphone-design-bois.jpg",
-      "stock": 5
-    },
-    {
-      "name": "noire",
-      "price": 0,
-      "badge": "",
-      "category": "pochettes",
-      "image": "images/pochettes/pochette_noire.jpg",
-      "stock": 5
-    },
-    {
-      "name": "transparente",
-      "price": 0,
-      "badge": "",
-      "category": "pochettes",
-      "image": "images/pochettes/pochette_transparente.jpg",
       "stock": 5
     }
   ]

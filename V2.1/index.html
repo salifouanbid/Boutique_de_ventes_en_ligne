@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pochettes, coques incassables, chargeurs et écouteurs à Abomey-Calavi. Commande sur WhatsApp, livraison rapide, paiement à la réception.">
-<meta name="theme-color" content="#1B2A4A">
 <title>Pochettes Chic — Vitrine &amp; Commande WhatsApp</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,20 +24,20 @@
 <section class="hero">
   <div class="wrap hero-inner">
     <div>
-      <h1>Pochettes, coques incassables et chargeurs de qualité, livrés à deux pas de chez vous.</h1>
+      <h1>Des pochettes,incassables a haute resistance ,protege ecran qui font tourner les têtes,de bonne qualité, à deux pas de chez vous.</h1>
       <p class="sub">Découvrez le catalogue, choisissez votre modèle préféré et passez commande directement sur WhatsApp — livraison rapide, paiement à la réception.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#catalogue">Voir le catalogue</a>
+        <a class="btn btn-primary order-link" href="#" target="_blank" rel="noopener">Voir le catalogue</a>
         <a class="btn btn-secondary" href="#contact">Où me trouver</a>
       </div>
     </div>
     <div class="swatch-grid" aria-hidden="true">
-      <div class="swatch s1"><img alt="" loading="lazy" src="images/pochettes/1500_Pochette-iphone-11.jpg"></div>
-      <div class="swatch s2"><img alt="" loading="lazy" src="images/pochettes/2000_Pochette-a-une-main.jpg"></div>
-      <div class="swatch s3"><img alt="" loading="lazy" src="images/pochettes/2000_Pochette-iphone-13.jpg"></div>
-      <div class="swatch s4"><img alt="" loading="lazy" src="images/pochettes/2500_Pochette-iphone-13-pro.jpg"></div>
-      <div class="swatch s5"><img alt="" loading="lazy" src="images/pochettes/2500_Pochette-iphone.jpg"></div>
-      <div class="swatch s6"><img alt="" loading="lazy" src="images/pochettes/3000_Pochette-iphone-design-bois.jpg"></div>
+      <div class="swatch s1"><img src="images\pochettes\1500_Pochette-iphone-11.jpg"></div>
+      <div class="swatch s2"><img src="images\pochettes\2000_Pochette-a-une-main.jpg"></div>
+      <div class="swatch s3"><img src="images\pochettes\2000_Pochette-iphone-13.jpg"></div>
+      <div class="swatch s4"><img src="images\pochettes\2500_Pochette-iphone-13-pro.jpg"></div>
+      <div class="swatch s5"><img src="images\pochettes\2500_Pochette-iphone.jpg"></div>
+      <div class="swatch s6"><img src="images\pochettes\3000_Pochette-iphone-design-bois.jpg"></div>
     </div>
   </div>
 </section>
@@ -52,15 +49,15 @@
       <p>Chaque modèle est disponible en stock limité. Cliquez sur "Commander" pour réserver le vôtre directement sur WhatsApp.</p>
     </div>
     <div>
-      <h3>Les pochettes</h3>
+      <h3>Pour les pochettes voyons</h3>
       <div class="grid" id="catalogueGrid"></div>
     </div>
     <div>
-      <h3>Chargeurs et écouteurs sans fil</h3>
+      <h3>Pour les chargeur et ecouteurs sans fil voyez ces pepites</h3>
       <div class="grid" id="chargeurGrid"></div>
     </div>
     <div>
-      <h3>Coques incassables, haute résistance</h3>
+      <h3>Pour les incassables resistants n'allez pas plus loin</h3>
       <div class="grid" id="incassableGrid"></div>
     </div>
   </div>
@@ -72,7 +69,7 @@
       <h2>Pourquoi commander ici</h2>
     </div>
     <div class="trust-grid">
-      <div class="trust-item"><div class="num">100%</div><p>Sélectionné pièce par pièce</p></div>
+      <div class="trust-item"><div class="num">100%</div><p>Fait main, choisi pièce par pièce</p></div>
       <div class="trust-item"><div class="num">24h</div><p>Livraison rapide sur Abomey-Calavi et Cotonou</p></div>
       <div class="trust-item"><div class="num">0F</div><p>Paiement à la livraison, sans risque</p></div>
     </div>
@@ -132,16 +129,9 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Où me trouver</h2>
-      <p>Passez me voir, ou suivez votre livraison en direct avec le code reçu à la commande.</p>
+      <p>Passez me voir directement ou écrivez-moi sur WhatsApp pour toute question.</p>
+      <div id="contact-map" class="contact-map-container" aria-label="Carte des implantations du collège" data-i18n-attr-aria-label="contact.mapAria"></div>
     </div>
-    <form id="trackForm" class="track-form">
-      <label for="trackCode" class="sr-only">Code de commande</label>
-      <input id="trackCode" placeholder="Code de commande (ex. PC-7K4M2Q)" autocomplete="off" maxlength="9">
-      <button class="btn btn-primary" type="submit">Suivre ma livraison</button>
-      <button class="btn btn-secondary" type="button" id="locateBtn">Ma position</button>
-    </form>
-    <p id="trackStatus" class="track-status" role="status" aria-live="polite"></p>
-    <div id="contact-map" class="contact-map-container" role="region" aria-label="Carte de suivi de livraison"></div>
     <div class="cta-row">
       <a class="btn btn-primary order-link" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
     </div>
@@ -168,9 +158,7 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="config.js"></script>
-<script src="suivi.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

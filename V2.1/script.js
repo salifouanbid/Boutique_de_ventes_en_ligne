@@ -233,26 +233,24 @@ function stockMessage(stock){
   return `<p class="stock">${stock} en stock</p>`;
 }
 
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
 function renderCard(p){
   const media = p.image
-    ? `<img class="card-img" src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.closest('.card').querySelector('.card-img').outerHTML='<div class=\\'card-img s1\\'></div>'">`
+    ? `<img class="card-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.closest('.card').querySelector('.card-img').outerHTML='<div class=\\'card-img s1\\'></div>'">`
     : `<div class="card-img ${p.tag || 's1'}"></div>`;
   const priceLabel = p.price ? `${p.price.toLocaleString('fr-FR')} FCFA` : '';
   const outOfStock = p.stock !== undefined && p.stock <= 0;
   const orderMsg = 'Bonjour, je suis intéressé(e) par la ' + p.name + (p.price ? ' à ' + priceLabel : '') + '. Est-elle disponible ?';
   const orderBtn = outOfStock
     ? `<span class="order-btn order-btn-disabled">Rupture de stock</span>`
-    : `<a class="order-btn" href="${waLink(orderMsg)}" data-msg="${esc(orderMsg)}" target="_blank" rel="noopener">Commander</a>`;
+    : `<a class="order-btn" href="${waLink(orderMsg)}" target="_blank" rel="noopener">Commander</a>`;
 
   return `
     <div class="card">
       ${media}
       <div class="card-body">
-        <h3>${esc(p.name)}</h3>
-        ${p.occasion ? `<p style="color:var(--muted);font-size:.9rem;margin:0;">Idéale pour : ${esc(p.occasion)}</p>` : ''}
-        ${p.badge ? `<p style="color:var(--leaf);font-size:.88rem;font-weight:600;margin:0;">✨ ${esc(p.badge)}</p>` : ''}
+        <h3>${p.name}</h3>
+        ${p.occasion ? `<p style="color:var(--muted);font-size:.9rem;margin:0;">Idéale pour : ${p.occasion}</p>` : ''}
+        ${p.badge ? `<p style="color:var(--leaf);font-size:.88rem;font-weight:600;margin:0;">✨ ${p.badge}</p>` : ''}
         ${priceLabel ? `<div class="price">${priceLabel}</div>` : ''}
         ${stockMessage(p.stock)}
         ${orderBtn}
@@ -267,7 +265,6 @@ function renderCatalogue(items){
 function buildCatalogue1(){
   // Affiche d'abord le catalogue manuel pendant le chargement (évite un écran vide).
   renderCatalogue(PRODUCTS_POCHETTES);
-  if (SHEET_CSV_URL) loadFromSheet();
 
   /*if (LOCAL_CATALOGUE_URL) {
     fetch(LOCAL_CATALOGUE_URL)
@@ -295,23 +292,16 @@ function renderCatalogue2(items){
   document.getElementById('chargeurGrid').innerHTML = items.map(renderCard).join('');
 }
 function buildCatalogue2(){
-  renderCatalogue2(PRODUCTS_CHARGEUR);
+  renderCatalogue2(PRODUCTS_INCASSABLE);
 }
 function renderCatalogue3(items){
   document.getElementById('incassableGrid').innerHTML = items.map(renderCard).join('');
 }
 function buildCatalogue3(){
-  renderCatalogue3(PRODUCTS_INCASSABLE);
+  renderCatalogue3(PRODUCTS_CHARGEUR);
 }
 
 function loadFromSheet(){
-  if (!window.Papa){
-    const s = document.createElement('script');
-    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js';
-    s.onload = loadFromSheet;
-    document.head.appendChild(s);
-    return;
-  }
   Papa.parse(SHEET_CSV_URL, {
     download: true,
     header: true,
@@ -331,7 +321,7 @@ function loadFromSheet(){
         };
       });
 
-      renderCatalogue([...fromSheet, ...PRODUCTS_POCHETTES]);
+      renderCatalogue([...fromSheet, ...PRODUCTS]);
     },
     error: () => {
       // En cas d'échec réseau, le catalogue manuel déjà affiché reste en place.
@@ -435,15 +425,3 @@ buildTestimonials();
 buildStarWidgets();
 wireReviewForm();
 wireGeneralLinks();
-
-// Clic sur "Commander" : génère un code de suivi, l'ajoute au message WhatsApp
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.order-btn[data-msg]');
-  if (!btn) return;
-  e.preventDefault();
-  const code = window.newOrderCode();
-  const link = location.href.split(/[?#]/)[0] + '?suivi=' + code + '#contact';
-  const msg = btn.dataset.msg + `\n\nCode de suivi : ${code}\nSuivre ma livraison : ${link}`;
-  window.open(waLink(msg), '_blank', 'noopener');
-  window.showOrderCode(code);
-});
