@@ -444,7 +444,7 @@ document.addEventListener('click', (e) => {
   const code = window.newOrderCode();
   const link = location.href.split(/[?#]/)[0] + '?suivi=' + code + '#contact';
   const msg = btn.dataset.msg + `\n\nCode de suivi : ${code}\nSuivre ma livraison : ${link}`;
-  window.sb.from('orders').insert({ code, message: btn.dataset.msg }).then();
   window.open(waLink(msg), '_blank', 'noopener');
   window.showOrderCode(code);
+  try { window.sb && window.sb.from('orders').insert({ code, message: btn.dataset.msg }).then(); } catch {}
 });
