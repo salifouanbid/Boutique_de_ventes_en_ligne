@@ -1,5 +1,3 @@
-// URL de ta base Firebase Realtime Database, sans "/" final. Laisse vide pour désactiver le suivi en direct.
-// Exemple : "https://pochettes-chic-default-rtdb.firebaseio.com"
-const TRACKING_DB_URL = "";
-// Point de départ affiché sur la carte : Abomey-Calavi (à ajuster)
+const SUPABASE_URL = "https://aaosungdanwnughezpar.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable__TSRj4BOE7Fg7U468HXy6w_oWT76A0r";
 const BASE_POINT = [6.4489, 2.3556];

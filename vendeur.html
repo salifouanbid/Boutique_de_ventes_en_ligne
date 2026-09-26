@@ -9,39 +9,81 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="vendeur-box">
+<main class="vendeur-box" id="loginBox">
+  <h1>Espace vendeur</h1>
+  <p class="track-status">Connecte-toi pour voir les commandes en attente.</p>
+  <input id="email" class="track-form" style="padding:.8em;font:inherit" placeholder="Email" autocomplete="username">
+  <input id="pass" class="track-form" style="padding:.8em;font:inherit" placeholder="Mot de passe" type="password" autocomplete="current-password">
+  <button id="login" class="btn btn-primary">Se connecter</button>
+  <p id="loginMsg" class="track-status" role="status" aria-live="polite"></p>
+</main>
+
+<main class="vendeur-box" id="dashBox" style="display:none">
+  <h1>Commandes en attente</h1>
+  <div id="orders" class="track-status">Chargement…</div>
+  <hr style="border-color:var(--border);margin:20px 0">
   <h1>Livraison en cours</h1>
-  <p class="track-status">Collez le code de suivi reçu du client, puis appuyez sur Démarrer. Gardez cette page ouverte pendant la livraison.</p>
-  <input id="code" class="track-form" style="padding:.8em;font:inherit;text-transform:uppercase" placeholder="PC-7K4M2Q" maxlength="9" autocomplete="off">
-  <button id="go" class="btn btn-primary">Démarrer la livraison</button>
+  <p id="activeCode" class="track-status"></p>
   <button id="stop" class="btn btn-secondary" disabled>Livraison terminée</button>
   <p id="msg" class="track-status" role="status" aria-live="polite"></p>
+  <button id="logout" class="btn btn-secondary" style="margin-top:20px">Se déconnecter</button>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/supabase/2/supabase.min.js"></script>
 <script src="config.js"></script>
 <script>
 let watch = null, last = 0, lock = null, code = '';
-const $ = id => document.getElementById(id), say = t => $('msg').textContent = t;
-const put = body => fetch(`${TRACKING_DB_URL}/positions/${code}.json`, {method:'PUT', body:JSON.stringify(body)});
-$('go').onclick = async () => {
-  code = $('code').value.trim().toUpperCase();
-  if (!/^PC-[A-Z0-9]{6}$/.test(code)) return say('Code invalide.');
-  if (!TRACKING_DB_URL) return say('Renseigne TRACKING_DB_URL dans config.js.');
-  if (!navigator.geolocation) return say('Localisation non disponible.');
+const $ = id => document.getElementById(id), say = (id,t) => $(id).textContent = t;
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function login() {
+  say('loginMsg', 'Connexion…');
+  const { error } = await sb.auth.signInWithPassword({ email: $('email').value, password: $('pass').value });
+  if (error) return say('loginMsg', 'Identifiants incorrects.');
+  showDash();
+}
+
+async function loadOrders() {
+  $('orders').textContent = 'Chargement…';
+  const { data, error } = await sb.from('orders').select('code, message, created_at').eq('done', false).order('created_at', {ascending:false});
+  if (error) return $('orders').textContent = 'Impossible de charger les commandes.';
+  if (!data.length) return $('orders').textContent = 'Aucune commande en attente.';
+  $('orders').innerHTML = '';
+  data.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-primary';
+    btn.style.cssText = 'display:block;margin-bottom:8px;width:100%;text-align:left';
+    btn.textContent = `${o.code} — ${new Date(o.created_at).toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'})}`;
+    btn.onclick = () => startDelivery(o.code);
+    $('orders').appendChild(btn);
+  });
+}
+
+function showDash() { $('loginBox').style.display = 'none'; $('dashBox').style.display = ''; loadOrders(); }
+
+async function startDelivery(c) {
+  code = c;
+  $('activeCode').textContent = `Commande suivie : ${code}`;
+  if (!navigator.geolocation) return say('msg', 'Localisation non disponible.');
   try { lock = await navigator.wakeLock.request('screen'); } catch {}
   watch = navigator.geolocation.watchPosition(p => {
     if (Date.now() - last < 3000) return;
     last = Date.now();
-    put({lat:p.coords.latitude, lng:p.coords.longitude, t:last})
-      .then(() => say('Position partagée avec le client.'))
-      .catch(() => say('Envoi impossible, vérifie ta connexion.'));
-  }, () => say('Autorise la localisation pour partager ta position.'), {enableHighAccuracy:true, maximumAge:2000});
-  $('go').disabled = true; $('stop').disabled = false; say('Démarrage…');
-};
+    sb.from('orders').update({ lat: p.coords.latitude, lng: p.coords.longitude, position_updated_at: new Date().toISOString() }).eq('code', code)
+      .then(({error}) => say('msg', error ? 'Envoi impossible, vérifie ta connexion.' : 'Position partagée avec le client.'));
+  }, () => say('msg', 'Autorise la localisation pour partager ta position.'), {enableHighAccuracy:true, maximumAge:2000});
+  $('stop').disabled = false;
+}
+
+$('login').onclick = login;
 $('stop').onclick = async () => {
   navigator.geolocation.clearWatch(watch); lock && lock.release();
-  await put({done:true, t:Date.now()}).catch(() => {});
-  $('go').disabled = false; $('stop').disabled = true; say('Livraison terminée.');
+  await sb.from('orders').update({ done: true }).eq('code', code);
+  $('stop').disabled = true; $('activeCode').textContent = ''; say('msg', 'Livraison terminée.');
+  loadOrders();
 };
+$('logout').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+sb.auth.getSession().then(({data}) => { if (data.session) showDash(); });
 </script>
 </body>
 </html>
