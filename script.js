@@ -60,14 +60,6 @@ const PRODUCTS_POCHETTES = [
       "stock": 5
     },
     {
-      "name": "Pochette iphone 13",
-      "price": 2000,
-      "badge": "",
-      "category": "pochettes",
-      "image": "images/pochettes/2000_Pochette-iphone-13.jpg",
-      "stock": 5
-    },
-    {
       "name": "Pochette multi telephone",
       "price": 2000,
       "badge": "",
@@ -100,6 +92,14 @@ const PRODUCTS_POCHETTES = [
       "stock": 5
     },
     {
+      "name": "Pochette iphone design bois",
+      "price": 2500,
+      "badge": "",
+      "category": "pochettes",
+      "image": "images/pochettes/2500_Pochette-iphone-design-bois.jpg",
+      "stock": 5
+    },
+    {
       "name": "Pochette iphone",
       "price": 2500,
       "badge": "",
@@ -108,11 +108,11 @@ const PRODUCTS_POCHETTES = [
       "stock": 5
     },
     {
-      "name": "Pochette iphone design bois",
+      "name": "Pochette iphone 13",
       "price": 3000,
       "badge": "",
       "category": "pochettes",
-      "image": "images/pochettes/3000_Pochette-iphone-design-bois.jpg",
+      "image": "images/pochettes/3000_Pochette-iphone-13.jpg",
       "stock": 5
     }
 ];
@@ -135,7 +135,7 @@ const PRODUCTS_INCASSABLE=[
     }
   ];
 const PRODUCTS_CHARGEUR=[
-   {
+  {
       "name": "chargeur C",
       "price": 1000,
       "badge": "",
@@ -168,6 +168,22 @@ const PRODUCTS_CHARGEUR=[
       "stock": 5
     },
     {
+      "name": "de chargeur",
+      "price": 1500,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/1500_-de-chargeur.jpg",
+      "stock": 5
+    },
+    {
+      "name": "chargeur qualité",
+      "price": 1500,
+      "badge": "",
+      "category": "chargeur",
+      "image": "images/chargeur/1500_chargeur-qualité.jpg",
+      "stock": 5
+    },
+    {
       "name": "ecouteur sans fil",
       "price": 2000,
       "badge": "",
@@ -181,22 +197,6 @@ const PRODUCTS_CHARGEUR=[
       "badge": "",
       "category": "chargeur",
       "image": "images/chargeur/2000_ecouteurs-sans-fil.jpg",
-      "stock": 5
-    },
-    {
-      "name": "tete chargeur qualité",
-      "price": 500,
-      "badge": "",
-      "category": "chargeur",
-      "image": "images/chargeur/500_tete-chargeur-qualité.jpg",
-      "stock": 5
-    },
-    {
-      "name": "tete de chargeur",
-      "price": 500,
-      "badge": "",
-      "category": "chargeur",
-      "image": "images/chargeur/500_tete-de-chargeur.jpg",
       "stock": 5
     }];
 // Témoignages affichés sur le site : copie ici les meilleurs avis reçus sur WhatsApp
